@@ -1,29 +1,30 @@
-import React from 'react';
-import {useDocxFile} from "../../utils/hook";
+import React, {FC, useRef} from 'react';
 
-export const SourceDocument = () => {
+interface SourceDocumentType {
+    handleFileUpload: (event: React.ChangeEvent<HTMLInputElement>) => void
+    docxFile: File | null
+}
 
-    const {
-        changeText1, changeText2,
-        docxFile, handleFileUpload,
-        handleChange1, handleChange2,
-        handleFileDownload
-    } = useDocxFile()
+export const SourceDocument: FC<SourceDocumentType> = ({handleFileUpload, docxFile}) => {
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleClick = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
 
     return (
-        <div>
-            <div>
-                <input type="file" accept={".docx"} onChange={handleFileUpload}/>
-                <label>
-                    Имя переменной:
-                    <input type="text" value={changeText1} onChange={handleChange1}/>
-                </label>
-                <label>
-                    Значение переменной:
-                    <input type="text" value={changeText2} onChange={handleChange2}/>
-                </label>
-                <button onClick={handleFileDownload} disabled={!docxFile}>Download modified file</button>
-            </div>
+        <div className={'mt-5'}>
+            <input
+                type="file"
+                accept={".docx"}
+                onChange={handleFileUpload}
+                ref={fileInputRef}
+                style={{display: 'none'}}
+            />
+            <button type="button" className="btn btn-outline-info" onClick={handleClick}>{!docxFile ? "Загрузить файл" : "Файл загружен"}</button>
         </div>
     );
 };
