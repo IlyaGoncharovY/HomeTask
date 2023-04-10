@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-export const ButtonsForFields = () => {
+interface ButtonsForFieldsType {
+    handleAddPair: () => void
+    handleDeletePair: () => void
+}
 
-
+export const ButtonsForFields:FC<ButtonsForFieldsType> = ({handleDeletePair, handleAddPair}) => {
 
     return (
         <div>
-            <button>Добавить новую пару</button>
-            <button>Удалить последнюю пару</button>
+            <button onClick={handleAddPair}>Добавить новую пару</button>
+            <button onClick={handleDeletePair}>Удалить последнюю пару</button>
         </div>
     );
 };
