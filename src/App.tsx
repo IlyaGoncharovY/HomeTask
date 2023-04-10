@@ -8,20 +8,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
     const {
-        changeText1, changeText2,
-        docxFile, handleFileUpload,
-        handleChange1, handleChange2,
-        handleFileDownload
+        docxFile, changeTexts,
+        handleFileDownload, handleFileUpload,
+        handleDeletePair, handleAddPair,
+        handleChangeText
     } = useDocxFile()
 
     return (
         <div className={"container h-100 w-100"}>
             <div className={"d-flex flex-column align-items-center justify-content-center"}>
                 <SourceDocument handleFileUpload={handleFileUpload} docxFile={docxFile}/>
-                <InputFields changeText1={changeText1}
-                             changeText2={changeText2}
-                             handleChange1={handleChange1}
-                             handleChange2={handleChange2}
+                <InputFields changeTexts={changeTexts}
+                             handleChangeText={handleChangeText}
+                             handleAddPair={handleAddPair}
+                             handleDeletePair={handleDeletePair}
                 />
                 <DownloadButton docxFile={docxFile}
                                 handleFileDownload={handleFileDownload}
