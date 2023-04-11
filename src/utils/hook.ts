@@ -10,7 +10,9 @@ export const useDocxFile = () => {
     ]);
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+
         if (event.currentTarget.files && event.currentTarget.files.length > 0) {
+
             setDocxFile(event.currentTarget.files[0]);
         }
     };
@@ -24,11 +26,14 @@ export const useDocxFile = () => {
     };
 
     const handleAddPair = () => {
-        setChangeTexts([...changeTexts, {variable: '', valueVariable: ''}]);
+
+        setChangeTexts(texts => ([...texts, {variable: '', valueVariable: ''}]));
     };
 
     const handleDeletePair = () => {
-        if (changeTexts.length > 1) {
+
+        if (changeTexts.length) {
+
             const newChangeTexts = [...changeTexts];
             newChangeTexts.pop();
             setChangeTexts(newChangeTexts);
@@ -36,15 +41,18 @@ export const useDocxFile = () => {
     };
 
     const handleFileDownload = () => {
-        if (!docxFile) {
-            return;
-        }
+
+        if (!docxFile) return;
 
         const fileReader = new FileReader();
+
         fileReader.readAsBinaryString(docxFile);
+
         fileReader.onload = () => {
+
             const zip = new PizZip.default(fileReader.result as string);
             const doc = new docxtemplater.default();
+
             doc.loadZip(zip);
             doc.setData(
                 {
@@ -59,6 +67,7 @@ export const useDocxFile = () => {
             const output = doc.getZip().generate({type: 'blob'});
             const url = URL.createObjectURL(output);
             const link = document.createElement('a');
+
             link.href = url;
             link.download = `${docxFile.name.split('.')[0]}_modified.docx`;
             link.click();
