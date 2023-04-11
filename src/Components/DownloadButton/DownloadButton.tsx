@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
-// @ts-ignore
-import file from "../../Assets/baseWordFile/TestWord2.docx"
+import {onDownload} from "../../utils/onDownload/onDownload";
 
 
 interface DownloadButtonType {
@@ -10,18 +9,6 @@ interface DownloadButtonType {
 }
 
 export const DownloadButton: FC<DownloadButtonType> = ({docxFile, handleFileDownload}) => {
-
-    const onDownload = () => {
-        fetch(file).then((response) => {
-            response.blob().then((blob) => {
-                let url = window.URL.createObjectURL(blob);
-                let a = document.createElement("a");
-                a.href = url;
-                a.download = "testFile.docx";
-                a.click();
-            });
-        });
-    };
 
     return (
         <>
