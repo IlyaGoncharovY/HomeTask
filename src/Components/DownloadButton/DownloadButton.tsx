@@ -9,8 +9,8 @@ interface DownloadButtonType {
 export const DownloadButton: FC<DownloadButtonType> = ({docxFile, handleFileDownload}) => {
 
     return (
-        <div className={"mt-5"}>
-            <button type="button" className="btn btn-outline-info" onClick={handleFileDownload} disabled={!docxFile}>Скачать изменённый документ</button>
+        <div className={"col-12 mt-2 text-end"}>
+            <button type="button" className="btn btn-success" onClick={handleFileDownload} disabled={!docxFile}>Скачать изменённый документ</button>
         </div>
     );
 };

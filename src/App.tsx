@@ -15,14 +15,21 @@ function App() {
     } = useDocxFile()
 
     return (
-        <div className={"container h-100 w-100"}>
-            <div className={"d-flex flex-column align-items-center justify-content-center"}>
+        <div className={"container"}>
+            <div className={'form-group row'}>
                 <SourceDocument handleFileUpload={handleFileUpload} docxFile={docxFile}/>
-                <InputFields changeTexts={changeTexts}
-                             handleChangeText={handleChangeText}
-                             handleAddPair={handleAddPair}
-                             handleDeletePair={handleDeletePair}
-                />
+            </div>
+            <div className="form-group row">
+                <div className="col-12 mt-2">
+                    <InputFields changeTexts={changeTexts}
+                                 handleChangeText={handleChangeText}
+                                 handleAddPair={handleAddPair}
+                                 handleDeletePair={handleDeletePair}
+                    />
+                </div>
+
+            </div>
+            <div className="form-group row">
                 <DownloadButton docxFile={docxFile}
                                 handleFileDownload={handleFileDownload}
                 />

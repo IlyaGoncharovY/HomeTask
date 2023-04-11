@@ -16,16 +16,17 @@ export const SourceDocument: FC<SourceDocumentType> = ({handleFileUpload, docxFi
     };
 
     return (
-        <div className={'mt-5'}>
-            <input
-                type="file"
-                accept={".docx"}
-                onChange={handleFileUpload}
-                ref={fileInputRef}
-                style={{display: 'none'}}
-            />
-            <button type="button" className="btn btn-outline-info" onClick={handleClick}>{!docxFile ? "Загрузить файл" : "Файл загружен"}</button>
-        </div>
+            <div>
+                <input
+                    type="file"
+                    accept={".docx"}
+                    onChange={handleFileUpload}
+                    ref={fileInputRef}
+                    style={{display: 'none'}}
+                />
+                <button type="button" className="btn btn-outline-info"
+                        onClick={handleClick}>{!docxFile ? "Загрузить файл" : "Файл загружен"}</button>
+            </div>
     );
 };
 

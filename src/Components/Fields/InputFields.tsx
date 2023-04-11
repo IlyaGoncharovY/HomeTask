@@ -18,21 +18,23 @@ export const InputFields: FC<InputFieldsType> = ({
     return (
         <>
             {changeTexts.map((changeText, index) => (
-                <div key={index} className="mt-5 row">
-                    <div className="col-12 col-md-6">
+                <div key={index} className="row mb-2">
+                    <div className="col-12 col-md-5 mb-2 mb-md-0">
                         <input
                             type="text"
                             value={changeText.variable}
                             onChange={handleChangeText(index, 'variable')}
                             placeholder={"Имя переменной"}
+                            className="form-control"
                         />
                     </div>
-                    <div className="col-12 col-md-6 mt-3 mt-md-0">
+                    <div className="col-12 col-md-7">
                         <input
                             type="text"
                             value={changeText.valueVariable}
                             onChange={handleChangeText(index, 'valueVariable')}
                             placeholder={"Значение переменной:"}
+                            className="form-control"
                         />
                     </div>
                 </div>
