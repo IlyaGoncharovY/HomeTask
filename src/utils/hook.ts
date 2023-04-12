@@ -32,7 +32,7 @@ export const useDocxFile = () => {
 
     const handleDeletePair = () => {
 
-        if (changeTexts.length) {
+        if (changeTexts.length > 1) {
 
             const newChangeTexts = [...changeTexts];
             newChangeTexts.pop();
