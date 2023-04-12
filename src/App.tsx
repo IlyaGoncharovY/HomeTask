@@ -4,6 +4,7 @@ import {InputFields} from "./Components/Fields/InputFields";
 import {DownloadButton} from "./Components/DownloadButton/DownloadButton";
 import {useDocxFile} from "./utils/hook";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {ModalForExample} from "./Components/ModalWindow/ModalForExample";
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
                                 handleFileDownload={handleFileDownload}
                 />
             </div>
+            <ModalForExample changeTexts={changeTexts}/>
         </div>
     )
 }
